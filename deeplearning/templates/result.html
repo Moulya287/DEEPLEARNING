@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Results - Smart Detection System</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .header {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .header h1 {
+            color: #667eea;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 16px;
+        }
+
+        .video-container {
+            background: white;
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .video-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .video-wrapper {
+            position: relative;
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .controls {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-secondary {
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        .btn-secondary:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-icon {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .card-text {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .alert {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .alert-warning {
+            background: #ffe5e5;
+            border-left-color: #ff4757;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        @media (max-width: 768px) {
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Analysis Complete</h1>
+            <p>Your video has been processed successfully</p>
+        </div>
+
+        <div class="video-container">
+            <div class="video-title">
+                <span>🎥</span>
+                <span>Processed Video Output</span>
+            </div>
+            <div class="video-wrapper">
+                <video id="videoPlayer" controls>
+                    <source src="/video" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            <div class="controls">
+                <button class="btn btn-primary" onclick="document.getElementById('videoPlayer').play()">
+                    ▶ Play
+                </button>
+                <button class="btn btn-primary" onclick="document.getElementById('videoPlayer').pause()">
+                    ⏸ Pause
+                </button>
+                <button class="btn btn-secondary" onclick="window.location.reload()">
+                    🔄 Reload
+                </button>
+            </div>
+        </div>
+
+        <div class="info-cards">
+            <div class="card">
+                <div class="card-icon">🚗</div>
+                <div class="card-title">Vehicle Detection</div>
+                <div class="card-text">Real-time vehicle tracking with speed and movement analysis. Identifies cars, trucks, and buses with risk assessment.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🐘</div>
+                <div class="card-title">Wildlife Monitoring</div>
+                <div class="card-text">Detects animals including elephants, bears, zebras, and giraffes. Size-based risk classification.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon">⚠️</div>
+                <div class="card-title">Risk Levels</div>
+                <div class="card-text">
+                    <strong>🔴 HIGH:</strong> Stationary >10s or large wildlife<br>
+                    <strong>🟡 MEDIUM:</strong> Stationary 5-10s<br>
+                    <strong>🟢 LOW:</strong> Normal movement
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔥</div>
+                <div class="card-title">Hazard Detection</div>
+                <div class="card-text">Automatic fire/flame detection and traffic jam alerts for enhanced safety monitoring.</div>
+            </div>
+        </div>
+
+        <div class="alert">
+            <strong>ℹ️ Analysis Features:</strong><br>
+            • Vehicle speed and stationary time tracking<br>
+            • Wildlife detection with risk assessment<br>
+            • Accident prediction based on movement patterns<br>
+            • Fire and traffic jam detection<br>
+            • Real-time alerts and annotations
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="window.location.href='/'">
+                📤 Upload Another Video
+            </button>
+            <button class="btn btn-secondary" onclick="downloadVideo()">
+                💾 Download Result
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // Auto-refresh video if it's not loading
+        const video = document.getElementById('videoPlayer');
+        
+        video.addEventListener('error', function() {
+            setTimeout(() => {
+                video.load();
+            }, 2000);
+        });
+
+        function downloadVideo() {
+            window.location.href = '/video?download=1';
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', function(e) {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                if (video.paused) {
+                    video.play();
+                } else {
+                    video.pause();
+                }
+            }
+        });
+    </script>
+</body>
+</html>
